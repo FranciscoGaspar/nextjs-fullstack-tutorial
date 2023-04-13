@@ -1,3 +1,5 @@
+import { json } from "stream/consumers";
+
 const fetcher = async ({ url, method, body, json = true }) => {
     const res = await fetch(url, {
       method,
@@ -35,3 +37,12 @@ export const signin = async (user) => {
       json: false,
     });
 };
+
+export const createNewProject = async (name) => {
+  return fetcher({
+    url: '/api/project',
+    method: 'POST',
+    body: {name},
+    json: true
+  })
+}
