@@ -50,7 +50,7 @@ export default async function Page() {
           </div>
         </div>
         <div className="mt-6 flex-2 grow w-full flex">
-          <div className="w-full">
+          <div className="w-full pb-4">
             <TaskCard />
           </div>
         </div>
