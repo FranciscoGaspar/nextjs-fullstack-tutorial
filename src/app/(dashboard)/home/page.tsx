@@ -28,30 +28,30 @@ const getData = async () => {
 export default async function Page() {
   const { projects } = await getData();
   return (
-    <div className="h-full overflow-y-auto pr-6 w-full p-4">
-      <div className=" h-full  items-stretch justify-center min-h-[content]">
+    <div className="h-full overflow-y-auto pr-6 w-full">
+      <div className="flex flex-col items-stretch justify-center min-h-[content] gap-5 py-4">
         <div className="flex-1 grow flex">
           <Suspense fallback={<GreetingsSkeleton />}>
             <Greeting />
           </Suspense>
         </div>
-        <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3 ">
+        <div className="grid grid-cols-3 gap-5">
           {
             projects.map((project) => (
-              <div className="w-1/3 p-3" key={project.id}>
+              <div key={project.id}>
                 <Link href={`/project/${project.id}`}>
                   <ProjectCard project={project} />
                 </Link>
               </div>
             ))
           }
-          <div className="w-1/3 p-3">
-            <NewProject />
-          </div>
         </div>
-        <div className="mt-6 flex-2 grow w-full flex">
-          <div className="w-full pb-4">
-            <TaskCard />
+        <div className="w-full">
+            <NewProject />
+        </div>
+        <div className="flex-2 grow w-full flex">
+          <div className="w-full">
+            <TaskCard title={"Task List"}/>
           </div>
         </div>
       </div>
