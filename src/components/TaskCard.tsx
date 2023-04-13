@@ -9,7 +9,7 @@ const getData = async () => {
   const user = await getUserFromCookie(cookies());
   const tasks = await db.task.findMany({
     where: {
-      ownerId: user.id,
+      ownerId: user?.id,
       NOT: {
         status: TASK_STATUS.COMPLETED,
         deleted: false,
